@@ -1,0 +1,14 @@
+services:
+  web:
+    # Image pushed by the pipeline. Set DOCKERHUB_USERNAME in your shell first:
+    #   export DOCKERHUB_USERNAME=your-dockerhub-username
+    image: ${DOCKERHUB_USERNAME:-your-dockerhub-username}/flask-cicd-demo:latest
+    # Lets you build locally with: docker compose up --build
+    build:
+      context: .
+      args:
+        GIT_SHA: local
+    container_name: flask-cicd-demo
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
