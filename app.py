@@ -4,14 +4,14 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-VERSION = os.getenv("APP_VERSION", "2.0.0")
+VERSION = os.getenv("APP_VERSION", "1.0.0")
 GIT_SHA = os.getenv("GIT_SHA", "dev")
 
 
 @app.get("/")
 def home():
     return jsonify(
-        message="Hello from the CI/CD pipeline!",
+        message="Hello from the CI/CD pipeline! v2",
         version=VERSION,
         commit=GIT_SHA[:7],
     )
